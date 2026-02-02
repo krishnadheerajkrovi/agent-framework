@@ -1,6 +1,7 @@
 # Copyright (c) Microsoft. All rights reserved.
 
 import asyncio
+from dotenv import load_dotenv
 
 from agent_framework import ChatMessage, Content, Role
 from agent_framework.ollama import OllamaChatClient
@@ -17,6 +18,7 @@ https://ollama.com/
 
 """
 
+load_dotenv()
 
 def create_sample_image() -> str:
     """Create a simple 1x1 pixel PNG image for testing."""
