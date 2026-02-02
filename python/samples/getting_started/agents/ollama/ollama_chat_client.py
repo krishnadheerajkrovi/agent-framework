@@ -5,6 +5,7 @@ from datetime import datetime
 
 from agent_framework.ollama import OllamaChatClient
 from agent_framework import tool
+from dotenv import load_dotenv
 
 """
 Ollama Chat Client Example
@@ -18,6 +19,8 @@ https://ollama.com/
 
 """
 
+load_dotenv()
+
 # NOTE: approval_mode="never_require" is for sample brevity. Use "always_require" in production; see samples/getting_started/tools/function_tool_with_approval.py and samples/getting_started/tools/function_tool_with_approval_and_threads.py.
 @tool(approval_mode="never_require")
 def get_time():
@@ -27,7 +30,7 @@ def get_time():
 
 async def main() -> None:
     client = OllamaChatClient()
-    message = "What time is it? Use a tool call"
+    message = "What time is it, can you use a tool to get the time?"
     stream = False
     print(f"User: {message}")
     if stream:

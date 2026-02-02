@@ -1,8 +1,7 @@
 # Copyright (c) Microsoft. All rights reserved.
-
+from dotenv import load_dotenv
 import asyncio
 
-from agent_framework import TextReasoningContent
 from agent_framework.ollama import OllamaChatClient
 
 """
@@ -17,7 +16,7 @@ https://ollama.com/
 
 """
 
-
+load_dotenv()
 async def reasoning_example() -> None:
     print("=== Response Reasoning Example ===")
 
@@ -30,7 +29,7 @@ async def reasoning_example() -> None:
     print(f"User: {query}")
     # Enable Reasoning on per request level
     result = await agent.run(query)
-    reasoning = "".join((c.text or "") for c in result.messages[-1].contents if isinstance(c, TextReasoningContent))
+    reasoning = "".join((c.text or "") for c in result.messages[-1].contents)
     print(f"Reasoning: {reasoning}")
     print(f"Answer: {result}\n")
 

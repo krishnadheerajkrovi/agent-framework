@@ -5,6 +5,7 @@ from datetime import datetime
 
 from agent_framework.ollama import OllamaChatClient
 from agent_framework import tool
+from dotenv import load_dotenv
 
 """
 Ollama Agent Basic Example
@@ -17,7 +18,7 @@ Set the model to use via the OLLAMA_MODEL_ID environment variable or modify the 
 https://ollama.com/
 
 """
-
+load_dotenv()
 # NOTE: approval_mode="never_require" is for sample brevity. Use "always_require" in production; see samples/getting_started/tools/function_tool_with_approval.py and samples/getting_started/tools/function_tool_with_approval_and_threads.py.
 @tool(approval_mode="never_require")
 def get_time(location: str) -> str:
